@@ -1,0 +1,26 @@
+<div class="bg-gray-900 min-h-screen flex items-center justify-center">
+  <div class="bg-gray-800 w-full max-w-md rounded-lg shadow dark:border dark:border-gray-700 p-6">
+    <h2 class="text-center text-xl font-bold leading-tight tracking-tight text-white mb-6">Forgot your password?</h2>
+
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "space-y-4" }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <!-- Email Field -->
+      <div>
+        <%= f.label :email, class: "block mb-1 text-sm font-medium text-white" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "bg-gray-700 border border-gray-600 text-white text-xs rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500" %>
+      </div>
+
+      <!-- Submit Button -->
+      <div>
+        <%= f.submit "Send me reset password instructions", class: "w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" %>
+      </div>
+    <% end %>
+    <!-- Additional Links (e.g., Back to Sign In) -->
+    <div class="mt-4 text-center text-base font-light text-gray-500 dark:text-gray-400">
+      <%= render "devise/shared/links", class: " text-primary-600 hover:underline dark:text-primary-500 text-sm font-medium" %>
+    </div>
+  </div>
+</div>
+
+

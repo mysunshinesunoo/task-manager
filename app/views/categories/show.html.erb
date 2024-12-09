@@ -1,0 +1,37 @@
+<div class="h-screen bg-gray-900 text-white p-4">
+  <div class="max-w-4xl mx-auto p-6 bg-gray-800 rounded-lg shadow-md">
+    <div class="flex justify-between items-center mb-4">
+      <h1 class="text-2xl font-bold"><%= @category.category_name %></h1>
+       
+      <ul class="space-x-4 flex">
+        <li><%= link_to "Edit", edit_category_path(@category), class: "text-blue-400 hover:text-blue-300 underline" %></li>
+      </ul>
+      
+    </div>
+    <div>
+    <h2 class="text-1xl mb-7"><%= @category.description %></h2>
+    </div>
+    <h2 class="text-xl font-semibold mb-2">Tasks</h2>
+    <% if @category_tasks.any? %>
+      <ul class="space-y-4">
+        <% @category_tasks.each do |task| %>
+          <li class="bg-gray-700 p-4 rounded-lg shadow">
+            <p class="text-lg font-medium mb-2"><%= task.task_name %></p>
+            <div class="space-x-4">
+              <%= link_to "View", category_task_path(@category, task), class: "text-blue-400 hover:text-blue-300 underline" %>
+              <%= link_to "Edit", edit_category_task_path(@category, task), class: "text-yellow-400 hover:text-yellow-300 underline" %>
+              <%= button_to "Destroy", category_task_path(@category,task),method: :delete, data: { turbo: false }, class: "text-red-500 hover:text-red-400 underline" %>
+            </div>
+          </li>
+        <% end %>
+      </ul> 
+    <% else %>
+      <p class="text-gray-400">No tasks available in this category.</p>
+    <% end %>
+
+    <div class="mt-4 space-x-4">
+      <%= link_to "Add Task", new_category_task_path(@category), class: "bg-purple-500 hover:bg-purple-400 text-white px-4 py-2 rounded-md inline-flex items-center justify-center" %>
+      <%= link_to "Home", categories_path, class: "bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-md inline-flex items-center justify-center" %>
+    </div>
+  </div>
+</div>

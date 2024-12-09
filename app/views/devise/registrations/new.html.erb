@@ -1,0 +1,47 @@
+<div class="bg-gray-900 min-h-screen flex items-center justify-center">
+  <section class="w-full max-w-md px-6 py-8 mx-auto bg-gray-800 rounded-lg shadow dark:border dark:border-gray-700">
+    <div class="flex flex-col items-center mb-6 text-2xl font-semibold text-white dark:text-white">
+     
+    </div>
+
+    <h2 class="text-xl font-bold leading-tight tracking-tight text-white md:text-2xl dark:text-white mb-6 text-center">Sign Up</h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "space-y-4 md:space-y-6" }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <!-- Email Field -->
+      <div>
+        <%= f.label :email, class: "block mb-1 text-sm font-medium text-white" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "bg-gray-700 border border-gray-600 text-white text-xs rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500" %>
+      </div>
+
+      <!-- Password Field -->
+      <div>
+        <%= f.label :password, class: "block mb-1 text-sm font-medium text-white" %>
+        <% if @minimum_password_length %>
+          <em class="text-xs text-gray-400">(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "bg-gray-700 border border-gray-600 text-white text-xs rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500" %>
+      </div>
+
+      <!-- Password Confirmation Field -->
+      <div>
+        <%= f.label :password_confirmation, class: "block mb-1 text-sm font-medium text-white" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "bg-gray-700 border border-gray-600 text-white text-xs rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500" %>
+      </div>
+
+      <!-- Submit Button -->
+      <div>
+        <%= f.submit "Sign up", class: "w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" %>
+      </div>
+    <% end %>
+
+    <!-- Login Link -->
+    <p class="text-sm font-light text-gray-500 dark:text-gray-400 mt-4 text-center">
+      Already have an account?
+      <%= link_to "Login here", new_session_path(resource_name), class: "font-medium text-primary-600 hover:underline dark:text-primary-500" %>
+    </p>
+ 
+  </section>
+</div>
+

@@ -1,0 +1,33 @@
+<div class="bg-gray-900 flex justify-center items-center">
+  <%= form_with model: [@category, @task], class: "w-full max-w-lg bg-gray-800 p-6 rounded-lg shadow-lg text-white" do |form| %>
+    
+    <div class="mb-4">
+      <%= form.label :task_name, class: "block text-sm font-semibold mb-2" %>
+      <%= form.text_field :task_name, class: "w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+      <% @task.errors.full_messages_for(:task_name).each do |message| %>
+        <div class="text-red-500 text-xs mt-1"><%= message %></div>
+      <% end %>
+    </div>
+
+    <div class="mb-4">
+      <%= form.label :description, class: "block text-sm font-semibold mb-2" %>
+      <%= form.text_field :description, class: "w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+      <% @task.errors.full_messages_for(:description).each do |message| %>
+        <div class="text-red-500 text-xs mt-1"><%= message %></div>
+      <% end %>
+    </div>
+
+    <div class="mb-4">
+      <%= form.label :due_date, class: "block text-sm font-semibold mb-2" %>
+      <%= form.date_field :due_date, class: "w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+      <% @task.errors.full_messages_for(:due_date).each do |message| %>
+        <div class="text-red-500 text-xs mt-1"><%= message %></div>
+      <% end %>
+    </div>
+
+    <div class="flex justify-center mt-6">
+      <%= form.submit "Submit", class: "bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg" %>
+    </div>
+    
+  <% end %>
+</div>

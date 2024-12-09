@@ -1,0 +1,27 @@
+<div class="h-screen bg-gray-900 text-white p-4">
+  <div class="max-w-4xl mx-auto p-6 bg-gray-800 rounded-lg shadow-md">
+    <h2 class="text-2xl font-bold mb-4">Tasks Due Today</h2>
+
+    <% if @tasks_due_today.any? %>
+      <ul class="space-y-4">
+        <% @tasks_due_today.each do |task| %>
+          <li class="bg-gray-700 p-4 rounded-lg shadow">
+            <p class="text-lg font-medium mb-2"><%= task.task_name %></p>
+            <p class="mb-2"><%= task.description %></p>
+            <p class="text-gray-400">Due Date: <%= task.due_date %></p>
+
+            <div class="mt-4 space-x-4">
+              <%= link_to "Delete", category_task_path(@category, task), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "bg-red-500 hover:bg-red-400 text-white px-4 py-2 rounded-md inline-flex items-center justify-center" %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p class="text-gray-400">No tasks due today.</p>
+    <% end %>
+
+    <div class="mt-4">
+      <%= link_to "Home", categories_path, class: "bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-md inline-flex items-center justify-center" %>
+    </div>
+  </div>
+</div>
