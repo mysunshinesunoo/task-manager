@@ -63,4 +63,4 @@ gem "devise", "~> 4.9"
 
 gem "tailwindcss-rails"
 # pin to tailwindcss version 3.4.13
-gem "tailwindcss-ruby", "3.4.14"
+gem "tailwindcss-ruby", "3.4.16"
